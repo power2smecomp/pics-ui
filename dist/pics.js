@@ -111,7 +111,7 @@ power2smeChat.directive("scroll", function ($window) {
 power2smeChat.directive('picsView', function () {
     return {
         restrict: 'E',
-        templateUrl: 'components/chatui/chatview.html',
+        templateUrl: 'chatview.html',
         link: function (scope, element, attrs) {
             console.log('I am chatui directive');
             try {
@@ -140,31 +140,31 @@ power2smeChat.directive('picsView', function () {
 
 power2smeChat.directive('welcomeFrame', function () {
     return {
-        templateUrl:'components/chatui/subviews/welcomeframeview.html'
+        templateUrl:'welcomeframeview.html'
     };
 });
 
 power2smeChat.directive('registerFrame', function () {
     return {
-        templateUrl: 'components/chatui/subviews/registerframeview.html'
+        templateUrl: 'registerframeview.html'
     };
 });
 
 power2smeChat.directive('chatFrame', function () {
     return {
-        templateUrl: 'components/chatui/subviews/chatframeview.html'
+        templateUrl: 'chatframeview.html'
     };
 });
 
 power2smeChat.directive('sendmessageFrame', function () {
     return {
-        templateUrl: 'components/chatui/subviews/sendmessageboxview.html'
+        templateUrl: 'sendmessageboxview.html'
     };
 });
 
 power2smeChat.directive('mesmerizeFrame', function () {
     return {
-        templateUrl: 'components/chatui/subviews/mesmerizeview.html'
+        templateUrl: 'mesmerizeview.html'
     };
 });
 //-------------------------------------------------------------------------------

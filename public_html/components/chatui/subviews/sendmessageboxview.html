@@ -1,0 +1,65 @@
+<!--
+This file is property of Power2SME pvt. ltd.
+@author(developer) : Himanshu Shekhar (himanshushekhar002@gmail.com)
+@Date :
+@FileName For Reference :
+@Purpose : 
+@Other Description :
+-->
+<!-- <div class="bottom-bar-container">
+    <div class="suggestion-bar-container">
+        <md-virtual-repeat-container id="horizontal-container" class="horizontal-container" md-orient-horizontal>
+            <div md-virtual-repeat="item in suggestionList"
+                 class="repeated-item" >
+                <div class ="chip" ng-click="choose($index, -1)">
+                    {{item}}
+                </div>
+            </div>
+        </md-virtual-repeat-container>
+    </div>
+    <table class="write-box-table" >
+        <tr>
+            <td  style="height: 48px;width:100%;">
+                <md-input-container class="send-message-input-box md-block" md-is-error="validateText()" md-no-float>
+                    <textarea   ng-disabled="!isProgressInActive" 
+                                id="input" 
+                                ng-model="message.text" 
+                                max-rows="3" 
+                                md-maxlength="getMaxTextBoxLength()" 
+                                class="input-box" 
+                                type="text" 
+                                placeholder="Write a reply ..." 
+                                my-enter="send()" 
+                                ctrl-enter>
+                    </textarea>
+                </md-input-container>
+            </td>
+            <td class="chat_send_button_td" ng-click="send();">
+                <md-toolbar class="md-primary md-hue-2 send-icon chat-send-button"><md-icon>send</md-icon></md-toolbar>
+            </td>
+        </tr>
+    </table>
+</div> -->
+
+<div class="footer">
+    <div class="footer-input">
+        <textarea   ng-disabled="!isProgressInActive" 
+                    id="messagebox" 
+                    style="resize: none;"
+                    ng-model="message.text" 
+                    max-rows="3" 
+                    ng-change="adjustWindowSizeOnTextOverflow()"
+                    maxlength="75" 
+                    class="input-area" 
+                    type="text" 
+                    placeholder="Write a reply ..." 
+                    my-enter="send()"
+                    ctrl-enter>
+        </textarea>
+    </div>
+    <div ng-click="send()">
+        <md-toolbar class="md-primary md-hue-2 send-icon chat-send-button" ng-class="{'btn-active': message.text.length > 0}">
+            <md-icon>send</md-icon>
+        </md-toolbar>
+    </div>
+</div>

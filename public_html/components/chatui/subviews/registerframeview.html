@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<!--
+This file is property of Power2SME pvt. ltd.
+@author(developer) : Himanshu Shekhar (himanshushekhar002@gmail.com)
+@Date :
+@FileName For Reference :
+@Purpose : 
+@Other Description :
+-->
+<div style="height: 480px;"> 
+    <!-- <div class="chatmsg message-box-container-bot intro-bubble">
+        <img class="welcome-user-icon" ng-src="{{getBotIconUrl()}}">
+        <div>
+            <b>PICS</b><br/>
+            <small>Virtual Assistant Agent</small>
+        </div>
+    </div> -->
+    <md-content id="content" style="background: transparent; width: 100%;height: 73%;padding-bottom: 15px;">
+        <div class="chatmsg message-box-container-bot">
+            <!-- <img class="user-icon" ng-src="{{getBotIconUrl()}}"> -->
+            <div class="white-bubble">
+                Hey! I’am Power2sme’s virtual assistant agent. 
+                <br/>
+                How may I help You?
+            </div>
+        </div>
+        <div class="chatmsg message-box-container-bot">
+            <!-- <img class="user-icon" ng-src="{{getBotIconUrl()}}"> -->
+            <div class="white-bubble"> 
+                Please provide your mobile number to start with.
+            </div>
+        </div>
+        <!-- -->
+        <div>
+            <div ng-repeat="msg in phoneValidationMessageList track by $index" class="chatmsg message-box-container-bot">
+                <!-- <img class="user-icon" ng-src="{{getBotIconUrl()}}"> -->
+            <div class="white-bubble" id="{{$index}}">
+                {{msg}}
+            </div>
+            </div>
+        </div>
+    </md-content>
+
+    <div class="footer">
+        <div class="footer-input">
+            <input  id="mobilenumber"
+                    class="phone-number"
+                    ng-model="userdetail.phone" 
+                    maxlength="10"
+                    autocomplete="new-username"
+                    validate-phone
+                    placeholder="Contact Number"
+                    my-enter="sign_up_submit('enter')">
+        </div>
+        <div    class="footer-btn" 
+                ng-click="sign_up_submit('click')" 
+                style='margin-right: 10px;'
+                ng-class="{'btn-active': userdetail.phone.length == 10}"
+                ng-disabled="userdetail.phone.length < 10">
+            Start Chat 
+        </div>
+    </div>
+</div>

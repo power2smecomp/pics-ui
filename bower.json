@@ -1,0 +1,43 @@
+{
+  "name": "pics-view",
+  "version": "1.0.0",
+  "authors": [
+    "Himanshu Shekhar <himanshushekhar002@gmail.com>"
+  ],
+  "description": "Angular js plugin to enable chatbot interface for the company power2sme.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/himanshushekhar002/pics/pics.git"
+  },
+  "main": [
+    "public_html/assets/css/customchat.css",
+    "public_html/chatapp.js"        
+  ],
+  "keywords": [
+    "pics",
+    "chatbot",
+    "power2sme",
+    "bot"
+  ],
+  "dependencies": {
+           "jquery": "~3.2.1",
+           "angular": "~1.5.9",
+           "angular-sanitize":"~1.5.9",
+           "angular/angular-aria": "~1.5.9",
+           "flesler/jquery.scrollTo": "~2.1.2",
+           "iominh/ng-scrollbars": "~0.0.11"
+           },
+  "resolutions": {
+      "angular": "1.5.9"
+            },
+  "ignore": [
+    ".bowerrc",
+    ".gitignore",
+    ".jshintrc",
+    "html",
+    "php",
+    "nbproject",
+    "change.log"
+  ]
+}

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<!--
+This file is property of Power2SME pvt. ltd.
+@author(developer) : Himanshu Shekhar (himanshushekhar002@gmail.com)
+@Date :
+@FileName For Reference :
+@Purpose : 
+@Other Description :
+-->
+<div ng-controller="ChatUIController">
+    <div ng-click="maximizeChat()" ng-show="mesmerize">
+        <mesmerize-frame class="mesmerize"></mesmerize-frame>
+    </div>
+    <div class="minmized-chat" ng-show="isChatMinimized()" ng-click="maximizeChat()">
+        <md-button md-ink-ripple="#FFFFFF" class="md-fab md-primary md-hue-2" aria-label="Comment">
+            <md-icon>chat</md-icon>
+            <md-tooltip md-direction="top">Chat now</md-tooltip>
+        </md-button>
+    </div>
+
+    <div ng-show="!isChatMinimized()" id="main_container" class="main-container">
+        <table class="main-table" >
+            <tr>
+                <td class="mouse-hand">
+            <md-toolbar class="md-primary md-hue-2 chat-header" md-ink-ripple="#FFFFFF">
+                <div layout="row" layout-align="space-between stretch">
+                    <div ng-if="!isChatMinimized()" ng-click="minimizeChat()" class="md-toolbar-tools layout-padding-left remove-border" flex="75">
+                        <div class="chat-header-switch">Power2SME Chatbot</div>                        
+                        <!-- HDING BELOW SWITCH TEMPORARLY UNTIL BETTER UI TO REPRESENT CURRENT AGENT BEING BUILT-->
+                        <!-- 
+                        <md-switch ng-disabled="true" ng-model="switchValue" ng-change="switchValueChanged()" class="md-accent md-hue-1 chat-header-switch" aria-label="autochat">
+                            Agent
+                        </md-switch>
+                        -->
+                    </div>
+                    <div ng-if="isChatMinimized()" ng-click="minimizeChat()" class="md-toolbar-tools chat-header-title remove-border" flex="100">
+                        {{getChatWindowTitle()}}
+                    </div>                
+                    <div class="md-toolbar-tools remove-border header-options" flex="25">
+                        <div ng-click="refreshChat()" class="h-option opacity0" ng-class="{'opacity1': chat_view_stage == 3 && chatMessageList.length > 1}">
+                            <md-icon ng-if="!isChatMinimized()" class="icon-hover">refresh</md-icon>
+                            <md-tooltip md-direction="top">Refresh chat</md-tooltip>
+                        </div>
+                        <div ng-click="minimizeChat()" class="h-option">
+                            <md-icon ng-if="!isChatMinimized()" class="icon-hover">close</md-icon>
+                            <md-tooltip md-direction="top">Close</md-tooltip>
+                        </div>
+                        <!-- <md-icon ng-if="isChatMinimized()">expand_less</md-icon> -->
+                    </div>
+                </div>
+            </md-toolbar>
+            <md-progress-linear md-mode="indeterminate" ng-disabled="isProgressInActive"></md-progress-linear>
+            </td>
+            </tr>
+            <tr class="" ng-show="chat_view_stage == 1">
+                <td>
+                    <!--                <div ng-include="getWelcomeFrame()"></div>-->
+            <welcome-frame></welcome-frame>
+            </td>
+            </tr>
+            <tr ng-show="chat_view_stage == 2">
+                <td>
+                    <!--                <div ng-include="getRegisterFrame()"></div>-->
+            <register-frame></register-frame>
+            </td>
+            </tr>
+            <tr class="chat-view-tr" ng-show="chat_view_stage == 3">
+                <td>
+                    <div ng-scrollbars ng-scrollbars-update="scrollBarUpdate" ng-scrollbars-config="config" id="chatMessagesWindow">
+                        <div class="chat-view" id="chat_view" chat-frame></div>
+                    </div>
+                    <sendmessage-frame></sendmessage-frame>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

@@ -11,13 +11,5 @@
     "author": "himanshuraghuvanshi",
     "contributors": [],
     "dependencies": {},
-    "devDependencies": {
-        "gulp": "^3.2.0",
-        "gulp-angular-templatecache": "^2.2.6",
-        "gulp-concat": "^2.6.1",
-        "gulp-cssmin": "^0.2.0",
-        "gulp-minify": "^3.1.0",
-        "gulp-rename": "^1.4.0",
-        "gulp-uglify": "^3.0.2"
-    }
+    "devDependencies": {}
 }

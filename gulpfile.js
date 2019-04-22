@@ -15,22 +15,10 @@ var templateCache = require('gulp-angular-templatecache');
 /**
  * Run this task first.
  */
-gulp.task('templateToJs', function () {
+gulp.task('BUILD', function () {
     templateToJs();
-});
-
-/**
- * Run this task second.
- */
-gulp.task('intitialiseProject', function () {
     minifyjs();
-    minifycss();                        
-});
-
-/**
- * Run this task third.
- */
-gulp.task('moveDistToPublic', function () {
+    minifycss();
     moveCopyOfDistToPublic();
 });
 

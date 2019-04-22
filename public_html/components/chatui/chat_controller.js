@@ -143,12 +143,17 @@ app.controller("ChatUIController", ['$scope', '$log', '$timeout', '$interval', '
             console.log($scope.chatMessageList);
             let length = $scope.chatMessageList.length;
             console.log('list length ::: ' + length);
-            if (chatMessage.optionKey == optionKeys.CATEGORY) {
-                $scope.currentSelectedCategory = value;
-            }
             $scope.chatMessageList[length-1].dataList = null;
             console.log(value);
             $scope.noOfOptionsVisibleToUser = DEFAULT_OPTIONS_SIZE;
+            if (typeof value == 'object') {
+                if (value.fullName != null && value.fullName != undefined && value.fullName.length != 0) {
+                    value = value.fullName;
+                }
+                else {
+                    value = value.entityName;
+                }
+            }
             $scope.sendMsg(value);
         }
 
@@ -349,11 +354,9 @@ app.controller("ChatUIController", ['$scope', '$log', '$timeout', '$interval', '
             ChatServices.refreshChat(token).promise.then(function(response) {
                 if (response.status == 200) {
                     $scope.chatMessageList = [];
-                    processForResponse(response.data);
+                    processForApiRequest('Hi');
                 }
-            }).finally(function() {
-                setProgressInActive();
-            });
+            })
         };
 
         /*#######################################*/
@@ -634,13 +637,11 @@ app.controller("ChatUIController", ['$scope', '$log', '$timeout', '$interval', '
                             console.log('INVALID RESPONSE TYPE');
                         }
                     });
-                    // if (counter == 2) {
-                    //     data.responses.optionKey = 'category'
-                    // }
-                    // if (counter == 3) {
-                    //     data.responses.optionKey = 'sub_category_steel'
-                    // }
-                    generateChatMessage(msg, $scope.activeagent, true, data.responses.optionKey, false);
+                    let optionKey = null;
+                    if (data.responses[0].options !=undefined) {
+                        optionKey = data.responses[0].options[0];
+                    }
+                    generateChatMessage(msg, $scope.activeagent, true, optionKey, false);
                     checkForAutoSwitch(msg);
                     if (msgs.length === 0 && $scope.activeagent === 'bot') {
                         if (angular.isUndefined(msg) || msg === null || msg === '') {

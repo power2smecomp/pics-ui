@@ -47,7 +47,7 @@ app.service("ChatServices", ['$log', '$http', '$q', function ($log, $http, $q) {
         this.refreshChat = function(tokenId) {
             var canceller = $q.defer();
             return {
-                promise: $http.get(BASE_DOMAIN +CONTEXT_CHATAPI + 'reset?tokenid=' + tokenId),
+                promise: $http.put(BASE_DOMAIN +CONTEXT_CHATAPI + 'reset?tokenid=' + tokenId),
                 cancel: canceller
             };
         }

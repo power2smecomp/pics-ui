@@ -414,8 +414,8 @@ app.controller("ChatUIController", ['$scope', '$log', '$timeout', '$interval', '
 
         function getOptionsList(nextOptionKey) {
             for (var i=0; i< categoryOptionsList.length; i++) {
-                if (data.optionKey == nextOptionKey) {
-                    return data.optionList;
+                if (categoryOptionsList[i].optionKey == nextOptionKey) {
+                    return categoryOptionsList[i].optionList;
                 }
             }
         }

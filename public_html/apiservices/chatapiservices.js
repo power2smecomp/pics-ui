@@ -39,7 +39,7 @@ app.service("ChatServices", ['$log', '$http', '$q', function ($log, $http, $q) {
         this.getChatOptionsList = function() {
             var canceller = $q.defer();
             return {
-                promise: $http.get(BASE_DOMAIN_FINANSME + '/node/p2s/' + 'chatoptions',),
+                promise: $http.get(BASE_DOMAIN_FINANSME + '/node/p2s/' + 'chatoptions'),
                 cancel: canceller
             };
         }

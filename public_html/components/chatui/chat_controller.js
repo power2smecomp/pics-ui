@@ -141,7 +141,7 @@ app.controller("ChatUIController", ['$scope', '$log', '$timeout', '$interval', '
             console.log('inside select option method :: ');
             console.log('list :: ');
             console.log($scope.chatMessageList);
-            let length = $scope.chatMessageList.length;
+            var length = $scope.chatMessageList.length;
             console.log('list length ::: ' + length);
             $scope.chatMessageList[length-1].dataList = null;
             console.log(value);
@@ -265,8 +265,8 @@ app.controller("ChatUIController", ['$scope', '$log', '$timeout', '$interval', '
 
         $scope.sendMsg = function (input) {
             if (input != "") {
-                let messageBoxEl = document.getElementById("messagebox");
-                let messageAreaEl = document.getElementById("chatMessagesWindow");
+                var messageBoxEl = document.getElementById("messagebox");
+                var messageAreaEl = document.getElementById("chatMessagesWindow");
                 messageBoxEl.value = "";
                 $scope.message.text = '';
                 console.log('sending message :: ' + intialMessageAreaElHeight);
@@ -413,7 +413,7 @@ app.controller("ChatUIController", ['$scope', '$log', '$timeout', '$interval', '
         }
 
         function getOptionsList(nextOptionKey) {
-            for (let data of categoryOptionsList) {
+            for (var i=0; i< categoryOptionsList.length; i++) {
                 if (data.optionKey == nextOptionKey) {
                     return data.optionList;
                 }
@@ -443,8 +443,8 @@ app.controller("ChatUIController", ['$scope', '$log', '$timeout', '$interval', '
                 userIconPath = customerIconUrl;
             }
             // Show options to the user.
-            let optionsList;
-            let optionListPresent = false;
+            var optionsList;
+            var optionListPresent = false;
             if (nextOptionKey !== null) {
                 optionListPresent = true;
                 optionsList = getOptionsList(nextOptionKey);
@@ -637,7 +637,7 @@ app.controller("ChatUIController", ['$scope', '$log', '$timeout', '$interval', '
                             console.log('INVALID RESPONSE TYPE');
                         }
                     });
-                    let optionKey = null;
+                    var optionKey = null;
                     if (data.responses[0].options !=undefined) {
                         optionKey = data.responses[0].options[0];
                     }
@@ -818,12 +818,12 @@ app.controller("ChatUIController", ['$scope', '$log', '$timeout', '$interval', '
         }
         
         $scope.adjustWindowSizeOnTextOverflow = function() {
-            let heightIncrementer = 10;
-            let messageBoxEl = document.getElementById('messagebox');
-            let messageBoxHeight = jQuery('#messagebox').height();
-            let messageAreaEl = document.getElementById('chatMessagesWindow');
-            let messageAreaHeight = jQuery('#chatMessagesWindow').height();
-            let noOfLines = Math.floor(messageBoxEl.scrollHeight / 20);
+            var heightIncrementer = 10;
+            var messageBoxEl = document.getElementById('messagebox');
+            var messageBoxHeight = jQuery('#messagebox').height();
+            var messageAreaEl = document.getElementById('chatMessagesWindow');
+            var messageAreaHeight = jQuery('#chatMessagesWindow').height();
+            var noOfLines = Math.floor(messageBoxEl.scrollHeight / 20);
             messageBoxLines.currentLines = noOfLines;
             if (messageBoxLines.currentLines > messageBoxLines.previousLines) {
                 incrementMessageBoxSize();

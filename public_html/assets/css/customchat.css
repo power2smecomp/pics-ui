@@ -232,6 +232,11 @@ md-toolbar,md-toolbar .md-toolbar-tools{
     min-height: 24px !important;
 }
 
+md-tooltip .md-content {
+    color: white !important;
+    background-color: #0f3b5b !important;
+}
+
 .md-panel.md-tooltip.md-default-theme, .md-panel.md-tooltip {
     color: black; 
     background-color: #DFE9EF;

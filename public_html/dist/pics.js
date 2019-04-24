@@ -707,7 +707,7 @@ app.controller("ChatUIController", ['$scope', '$log', '$timeout', '$interval', '
             ChatServices.refreshChat(token).promise.then(function(response) {
                 if (response.status == 200) {
                     $scope.chatMessageList = [];
-                    let responseData = {
+                    var responseData = {
                         "responses": [
                             {
                                 "textResponse":"Hello! How can I help you?",

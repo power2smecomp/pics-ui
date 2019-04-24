@@ -496,6 +496,35 @@ md-input-container .md-errors-spacer {
     background: #103B5B;
 }
 
+.restart {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.refresh:hover {
+    transform: rotate(360deg);
+    transition: transform;
+    transition-duration: 1s;
+}
+
+.restart .restart-btn {
+    text-align: center;
+    width: 110px;
+    margin: 0 auto;
+    background: #f7f7f7;
+    cursor: pointer;
+    padding: 5px 0px;
+    border: 1px solid #0f3b5b;
+    border-radius: 0px;
+    font-size: 12px;
+    transition: 300ms background;
+}
+.restart .restart-btn:hover {
+    background: #0f3b5b !important;
+    color: white !important;
+}
+
 .white-bubble:after {
 	content: '';
 	position: absolute;
@@ -552,8 +581,9 @@ md-input-container .md-errors-spacer {
     margin-left: 10px;
     height: 35px;
     padding: 0 0 0 15px;
-    font-size: 14px;
+    font-size: 13px;
     transition: 400ms ease-in-out;
+    font-family: 'Lato' !important;
 }
 .footer .footer-input .input-area {
     border: none !important; 

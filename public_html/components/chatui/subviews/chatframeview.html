@@ -59,38 +59,10 @@ This file is property of Power2SME pvt. ltd.
                         More...
                 </div>
             </div>
-    
-            <!-- <div class="card-container" ng-show="msg.showPrice" myindex="{{$index}}" chatmessagelist="chatMessageList" sendcardrequest ="sendCardRequest(true)">
-                <div ng-repeat="item in msg.dataList" class="repeated-card-item">
-                    <div class="card">
-                        <div id="card_header">
-                            <div id="subcategory">
-                                {{item.skuDetails.subcategory}}
-                            </div>
-                            <div id="brand">
-                                {{item.skuDetails.brand}}
-                            </div>
-                        </div>
-                        <div id="middle_content">
-                            <div class="row">
-                                <span>Category : </span>
-                                <span>{{item.skuDetails.category}}</span>
-                            </div>
-                            <div ng-repeat="(key, value) in item.skuDetails.otherProperties" class="row">
-                                <span>{{key}} : </span>
-                                <span>{{value}}</span>
-                            </div>
-                            <div class="row">
-                                <span>Quantity : </span>
-                                <span>{{item.qty}}{{item.uom}}</span>
-                            </div>
-                        </div>
-                        <div id="bottom_content">
-                            <div id="price">{{item.price}}</div>
-                            <div id="add_to_cart" ng-click="addToCart(item)">Add to cart</div>
-                        </div>
-                    </div>
-                </div>
+            <!-- <div    class="restart" 
+                    ng-if="chatMessageList.length > 1 && chatMessageList.length-1 == $index && isProgressInActive == true"
+                    ng-click="refreshChat()">
+                <div class="restart-btn">Restart Chat</div>
             </div> -->
         </div>
     </div>

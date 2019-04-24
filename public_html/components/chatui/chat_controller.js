@@ -159,6 +159,7 @@ app.controller("ChatUIController", ['$scope', '$log', '$timeout', '$interval', '
 
         $scope.showMoreOptions = function() {
             $scope.noOfOptionsVisibleToUser += DEFAULT_OPTIONS_SIZE;
+            autoScrollChatMessageList('');
         }
 
         $scope.sign_up_submit = function (event) {
@@ -354,8 +355,20 @@ app.controller("ChatUIController", ['$scope', '$log', '$timeout', '$interval', '
             ChatServices.refreshChat(token).promise.then(function(response) {
                 if (response.status == 200) {
                     $scope.chatMessageList = [];
-                    processForApiRequest('Hi');
+                    let responseData = {
+                        "responses": [
+                            {
+                                "textResponse":"Hello! How can I help you?",
+                                "responseType":"CONVERSATION"
+                            }
+                        ],
+                        "message":"Success",
+                        "errorcode":0
+                    };
+                    processForResponse(responseData);
                 }
+            }).finally(function() {
+                setProgressInActive();
             })
         };
 
@@ -821,13 +834,10 @@ app.controller("ChatUIController", ['$scope', '$log', '$timeout', '$interval', '
             var heightIncrementer = 11;
             var messageBoxEl = document.getElementById('messagebox');
             var messageBoxHeight = jQuery('#messagebox').height();
-            console.log('message box height :: ' + messageBoxHeight)
             var messageAreaEl = document.getElementById('chatMessagesWindow');
             var messageAreaHeight = jQuery('#chatMessagesWindow').height();
-            console.log('chat window height :: ' + messageAreaHeight)
             var noOfLines = Math.floor(messageBoxEl.scrollHeight / 20);
             messageBoxLines.currentLines = noOfLines;
-            console.log('no of lines :: ' + noOfLines)
             if (messageBoxLines.currentLines > messageBoxLines.previousLines) {
                 incrementMessageBoxSize();
                 decrementMessageAreaSize();
@@ -835,16 +845,12 @@ app.controller("ChatUIController", ['$scope', '$log', '$timeout', '$interval', '
             messageBoxLines.previousLines = messageBoxLines.currentLines;
 
             function incrementMessageBoxSize() {
-                console.log('inside increment message box :: ');
                 messageBoxHeight = messageBoxHeight + ((noOfLines-1) * heightIncrementer);
-                console.log('new message box height :: ' + messageBoxHeight);
                 messageBoxEl.style.height = messageBoxHeight + 'px';
             }
 
             function decrementMessageAreaSize() {
-                console.log('inside decrement message area :: ');
                 messageAreaHeight = messageAreaHeight - ((noOfLines-1) * heightIncrementer);
-                console.log('new message area height :: ' + messageAreaHeight);
                 messageAreaEl.style.height = messageAreaHeight + 'px';
             }
         }

@@ -43,8 +43,8 @@ This file is property of Power2SME pvt. ltd.
             </div>
     
             <div class="select-options" ng-if="msg.dataList.length > 0">
-                <div ng-repeat="option in msg.dataList| limitTo: noOfOptionsVisibleToUser track by $index" class="option">
-                    <div ng-click="selectOption(option, msg)">{{option.entityName}}</div>
+                <div ng-repeat="option in msg.dataList| limitTo: noOfOptionsVisibleToUser track by $index">
+                    <div class="option" ng-click="selectOption(option, msg)">{{option.entityName}}</div>
                     <md-tooltip md-direction="top" 
                                 class="option-tooltip" 
                                 md-delay="400" 

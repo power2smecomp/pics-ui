@@ -11,28 +11,28 @@ var rename = require('gulp-rename');
 var concat = require('gulp-concat');
 var templateCache = require('gulp-angular-templatecache');
 
+/**
+ * Run this below tasks in order.
+ */
 
 /**
- * Run this task first.
+ * Run This task first.
  */
-gulp.task('BUILD', function () {
-    templateToJs();
-    minifyjs();
-    minifycss();
-    moveCopyOfDistToPublic();
+gulp.task('template-to-js', function() {
+    return gulp.src([
+        'public_html/components/chatui/subviews/*.html',
+        'public_html/components/chatui/*.html'])
+    .pipe(templateCache('templates.js',{
+        standalone : true  
+    }))
+    .pipe(gulp.dest('dist/'));
 });
 
-function minifycss(){
-    gulp.src([
-        'public_html/assets/css/customchat.css'
-    ])
-    .pipe(cssmin())
-    .pipe(rename({suffix: '.min', basename : 'pics'}))
-    .pipe(gulp.dest('dist'));
-}
-
-function minifyjs(){
-        gulp.src([
+/**
+ * Run This task second.
+ */
+gulp.task('minify-js', function() {
+    return gulp.src([
         'public_html/chatapp.js',
         'public_html/filters/chatui_filters.js',
         'public_html/directives/chatui_directives.js',
@@ -51,18 +51,23 @@ function minifyjs(){
                 })
                 )
         .pipe(gulp.dest('dist/'));
-}
+});
 
-function templateToJs(){
-    gulp.src([
-        'public_html/components/chatui/subviews/*.html',
-        'public_html/components/chatui/*.html'])
-    .pipe(templateCache('templates.js',{
-        standalone : true  
-    }))
-    .pipe(gulp.dest('dist/'));
-}
+/**
+ * Run This task third.
+ */
+gulp.task('minify-css', function() {
+    return gulp.src([
+        'public_html/assets/css/customchat.css'
+    ])
+    .pipe(cssmin())
+    .pipe(rename({suffix: '.min', basename : 'pics'}))
+    .pipe(gulp.dest('dist'));
+})
 
-function moveCopyOfDistToPublic(){
-    gulp.src(['dist/**/*']).pipe(gulp.dest('public_html/dist/'));
-}
+/**
+ * Run This task last.
+ */
+gulp.task('copy-dist-to-public', function() {
+    return gulp.src(['dist/**/*']).pipe(gulp.dest('public_html/dist/'));
+});
